@@ -1,6 +1,6 @@
 import React from 'react';
 import useStyles from './styles';
-const Post = () => {
+const Device = () => {
     const classes = useStyles();
     return (
         
@@ -8,4 +8,4 @@ const Post = () => {
     );
 }
 
-export default Post;
+export default Device;

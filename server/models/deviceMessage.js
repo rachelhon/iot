@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const deviceSchema = mongoose.Schema({
     deviceName: String,
     deviceID: String,
     createdAt: {
@@ -9,6 +9,6 @@ const postSchema = mongoose.Schema({
     },
 })
 
-var PostMessage = mongoose.model('PostMessage', postSchema);
+var DeviceMessage = mongoose.model('DeviceMessage', deviceSchema);
 
-export default PostMessage;
+export default DeviceMessage;

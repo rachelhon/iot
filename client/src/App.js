@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
-import { getPosts } from './actions/posts';
-import Posts from './components/Posts/Posts';
+import { getDevices } from './actions/devices';
+import Devices from './components/Devices/Devices';
 import Form from './components/Form/Form';
 import logo from './images/logo.png';
 import useStyles from './styles';
@@ -13,7 +13,7 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getPosts());
+        dispatch(getDevices());
     }, [dispatch]);
 
     return (
@@ -26,7 +26,7 @@ const App = () => {
           <Container>
             <Grid container justify="space-between" alignItems="stretch" spacing={3}>
               <Grid item xs={12} sm={7}>
-                <Posts />
+                <Devices />
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Form />

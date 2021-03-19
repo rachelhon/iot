@@ -1,21 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Post from './Post/Post';
+import Device from './Device/Device';
 
 import useStyles from './styles';
-const Posts = () => {
-    const posts = useSelector((state) => state.posts);
+const Devices = () => {
+    const devices = useSelector((state) => state.devices);
     const classes = useStyles();
 
-    console.log(posts);
+    console.log(devices);
     return (
         <>
             <h1 className={classes.heading}>DEVICES</h1>
-            <Post />
-            <Post />
+            <Device />
+            <Device />
         </>
     );
 }
 
-export default Posts;
+export default Devices;
