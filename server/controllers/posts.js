@@ -1,4 +1,8 @@
+import express from 'express';
+import mongoose from 'mongoose';
+
 import PostMessage from '../models/postMessage.js';
+
 export const getPosts = async (req, res) => {
     try{
         const postMessages = await PostMessage.find();
@@ -9,7 +13,7 @@ export const getPosts = async (req, res) => {
     }
 }
 export const createPost = async(req, res) => {
-    const bpost = req.body;
+    const post = req.body;
     const newPost = new PostMessage(post);
 
     try{
