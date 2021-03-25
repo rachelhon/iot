@@ -1,36 +1,65 @@
 import React, {useState} from 'react'
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import useStyles from './styles';
+import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {GoogleLogin} from 'react-google-login';
 import Input from './Input';
+import {signin, signup} from '../../actions/auth';
 
 import Icon from './icon';
 
+// initial value for text fields
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
+
 const Auth = () => {
+
+    // Redux hook instances
     const classes = useStyles();
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [form, setForm] = useState(initialState);
     const handleShowPassword = () => setShowPassword((prevShowPAssword) => !prevShowPAssword);
+
+
     const handleSubmit = (e) => {
       e.preventDefault();
+
+      if (isSignup) {
+        dispatch(signup(form, history));
+      } else {
+        dispatch(signin(form, history));
+      }
     }
     const handleChange = () => {
 
     }
 
     const switchMode = () => {
+        // when switching, it reinitializes values
+        setForm(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
         handleShowPassword(false);
     }
 
     const googleSuccess = async(res) => {
+      // the client ID is from Jiwon's console.developer.google.com OAuth key
       const result = res?.profileObj;
       const token = res?.tokenId;
+
+      try {
+        dispatch({type: Auth, data: {result, token}});
+        history.push('/');
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     const googleFailure = () => {
-      alert("Google sign in unsuccessful");
+      alert("Google Sign In unsuccessful");
     }
 
 

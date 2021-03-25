@@ -1,6 +1,5 @@
-import Devices from "../components/Devices/Devices"
 
-export default (devices = [], action) => {
+const deviceReducer = (devices = [], action) => {
     switch (action.type) {
         case 'FETCH_ALL':
             return action.payload;
@@ -11,3 +10,5 @@ export default (devices = [], action) => {
     }
 
 };
+
+export default deviceReducer;

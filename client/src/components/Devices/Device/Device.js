@@ -4,7 +4,7 @@ const Device = () => {
     const classes = useStyles();
     return (
         
-        <h1 className={classes.heading}>Device</h1>
+        <h1 className={classes.heading}>Device instance</h1>
     );
 }
 

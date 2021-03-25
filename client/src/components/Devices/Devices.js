@@ -11,7 +11,7 @@ const Devices = () => {
     console.log(devices);
     return (
         <>
-            <h1 className={classes.heading}>DEVICES</h1>
+            <h1 className={classes.heading}>List of Device instances</h1>
             <Device />
             <Device />
         </>
