@@ -24,7 +24,7 @@ const Form = () => {
     return (
         <Paper className={classes.paper}>
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-          <Typography variant="h6">Add new device</Typography>
+          <Typography variant="h6" align="center">Add new device</Typography>
           <TextField name="device name" variant="outlined" label="device name" fullWidth value={deviceData.deviceName} onChange={(e) => setDeviceData({ ...deviceData, deviceName: e.target.value })} />
           <TextField name="device ID" variant="outlined" label="device ID" fullWidth value={deviceData.deviceID} onChange={(e) => setDeviceData({ ...deviceData, deviceID: e.target.value })} />
           <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>

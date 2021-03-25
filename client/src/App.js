@@ -19,7 +19,7 @@ const App = () => {
     return (
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">User Main/Device List View</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">Device View</Typography>
           <img className={classes.image} src={logo} alt="icon" height="60" />
         </AppBar>
         <Grow in>
