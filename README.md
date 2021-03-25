@@ -1,13 +1,6 @@
-# iot
-download newest version of node.js
+# IoT Tracking App
 
-the followings commands are for installing pacakages for client/server folders.
+### direction 
+1. download newest version of node.js
 
-cd client
-npx create-react-app ./
-npm install axios moment react-file-base64 redux redux-thunk
-npm install react-redux
-
-cd serever
-npm init -y
-npm install body-parser cors express mongoose nodemon
+2. Then, for each client and server folder, execute **npm install** to install all the dependencies
