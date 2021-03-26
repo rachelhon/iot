@@ -25,7 +25,7 @@ const Form = () => {
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField name="device name" variant="outlined" label="device name" fullWidth value={deviceData.deviceName} onChange={(e) => setDeviceData({ ...deviceData, deviceName: e.target.value })} />
           <TextField name="device ID" variant="outlined" label="device ID" fullWidth value={deviceData.deviceID} onChange={(e) => setDeviceData({ ...deviceData, deviceID: e.target.value })} />
-          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Register Device</Button>
           <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
         </form>
       </Paper>
