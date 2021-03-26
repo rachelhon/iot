@@ -1,52 +1,54 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
 import logo from '../../images/logo.png';
 
 const Navbar = () => {
-    const classes = useStyles();
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const location = useLocation();
+  const classes = useStyles();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
 
-    const logout = () => {
-      dispatch({type: 'LOGOUT'});
-      // history hook navigates to the main page
-      history.push('/');
-      // user has logged out
-      setUser(null);
-    };
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+    // history hook navigates to the main page
+    history.push('/');
+    // user has logged out
+    setUser(null);
+  };
 
-    useEffect (() => {
-      //const token = user?.token;
-      //JWT ...
+  useEffect(() => {
+    //const token = user?.token;
+    //JWT ...
 
-      setUser(JSON.parse(localStorage.getItem('profile')));
-    }, [location]);
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
 
-    return (
-        <AppBar className={classes.appBar} position="static" color="inherit">
-          <div className={classes.brandContainer}>
-            <Typography component={Link} to="/home" className={classes.heading} variant="h5" align="center">IoT Tracking App</Typography>
-            <img className={classes.image} src={logo} alt="icon" height="60" />
+  return (
+    <AppBar className={classes.appBar} position="static" color="inherit">
+      <div className={classes.brandContainer}>
+        <Typography component={Link} to="/home" className={classes.heading} variant="h5" align="center">IoT Tracking App</Typography>
+        <a href="http://f3wireless.com/">
+          <img className={classes.image} src={logo} alt="f3 wireless logo" height="60" />
+        </a>
+      </div>
+      <Toolbar className={classes.toolbar}>
+        {user ? (
+          <div className={classes.profile}>
+            <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+            <Typography className={classes.userName} variant="h6">Welcome, {user.result.name}</Typography>
+            <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
           </div>
-          <Toolbar className={classes.toolbar}>
-            {user ? (
-              <div className={classes.profile}>
-                <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                <Typography className={classes.userName} variant="h6">Welcome, {user.result.name}</Typography>
-                <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-              </div>
-            ) : (
-              <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-            )}
-          </Toolbar>
-        </AppBar>
-      );
-    };
-    
+        ) : (
+          <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+};
+
 export default Navbar;
