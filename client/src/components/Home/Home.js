@@ -26,7 +26,8 @@ const Home = () => {
             <Grid item xs={12} sm={7}>
              <Devices/>
             </Grid>
-            <Button onClick={handleAddDevice}>
+            
+            <Button variant="contained" color="primary" onClick={handleAddDevice}>
              + Add Device
             </Button>
           </Grid>
