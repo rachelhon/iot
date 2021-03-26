@@ -35,6 +35,8 @@ export const signin = async(req, res) => {
 
 export const signup = async(req, res) => {
     const {firstName, lastName, email, password} = req.body;
+    console.log("received data");
+    console.log(firstName, lastName, email, password);
     try {
         const existingUser = await userModel.findOne({email});
 
@@ -45,9 +47,9 @@ export const signup = async(req, res) => {
         // second argument salt represents the level of diffculty to hash passwords, we now use 12 for default
         const hashedPassword = await bcrypt.hash(password, 12);
 
-        const result = await userModel.create({email, password: hashedPassword, name: '${firstName} ${lastName}'});
+        const result = await userModel.create({email, password: hashedPassword, name: `${firstName} ${lastName}`});
 
-        const token = jwt.sign({email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: '1h'});
+        const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'});
 
         res.status(200).json({result: result, token});
     } catch (error) {

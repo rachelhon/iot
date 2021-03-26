@@ -17,7 +17,7 @@ const Form = () => {
     }
 
     const clear = () => {
-
+      setDeviceData({deviceName: '', deviceID: ''});
     }
 
     return (

@@ -5,7 +5,7 @@ const secret = 'test';
 
 const auth = async(req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1];
+        const token = req.headers.Authorization.split(" ")[1];
         // google OAuth token header is > 500
         const isCustomAuth = token.length < 500;
 
