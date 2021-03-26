@@ -11,6 +11,7 @@ export default makeStyles(() => ({
     alignItems: 'center',
   },
   heading: {
+    
     color: 'rgba(189,43,49, 10)',
   },
   image: {
