@@ -27,7 +27,7 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(formData);
+      //console.log(formData);
       if (isSignup) {
         // send formData for data, history for navigation
         dispatch(signup(formData, history));

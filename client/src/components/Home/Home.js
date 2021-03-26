@@ -1,18 +1,24 @@
 import React, {useEffect} from 'react';
 import { Container, Grow, Grid, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-
+import {useHistory} from 'react-router-dom';
 import { getDevices } from '../../actions/devices';
 
 import Devices from '../Devices/Devices';
 
 const Home = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
   
     useEffect(() => {
       dispatch(getDevices());
     }, [dispatch]);
   
+    const handleAddDevice = (e) => {
+      e.preventDefault();
+      history.push('/AddDevice');
+    }
+
     return (
       <Grow in>
         <Container>
@@ -20,7 +26,7 @@ const Home = () => {
             <Grid item xs={12} sm={7}>
              <Devices/>
             </Grid>
-            <Button>
+            <Button onClick={handleAddDevice}>
              + Add Device
             </Button>
           </Grid>
