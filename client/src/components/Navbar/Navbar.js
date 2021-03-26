@@ -16,7 +16,7 @@ const Navbar = () => {
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
     // history hook navigates to the main page
-    history.push('/');
+    history.push('/auth');
     // user has logged out
     setUser(null);
   };
