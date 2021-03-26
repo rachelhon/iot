@@ -21,37 +21,37 @@ const Auth = () => {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-    const [form, setForm] = useState(initialState);
+    const [formData, setFormData] = useState(initialState);
     const handleShowPassword = () => setShowPassword((prevShowPAssword) => !prevShowPAssword);
 
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
+      console.log(formData);
       if (isSignup) {
-        dispatch(signup(form, history));
+        // send formData for data, history for navigation
+        dispatch(signup(formData, history));
       } else {
-        dispatch(signin(form, history));
+        dispatch(signin(formData, history));
       }
     }
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value});
     }
 
     const switchMode = () => {
         // when switching, it reinitializes values
-        setForm(initialState);
+        //setForm(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const googleSuccess = async(res) => {
       // the client ID is from Jiwon's console.developer.google.com OAuth key
       const result = res?.profileObj;
       const token = res?.tokenId;
-
       try {
-        dispatch({type: Auth, data: {result, token}});
+        dispatch({type: 'AUTH', data: {result, token}});
         history.push('/');
       } catch (error) {
         console.log(error);
@@ -59,7 +59,7 @@ const Auth = () => {
     };
 
     const googleFailure = () => {
-      alert("Google Sign In unsuccessful");
+      alert("Google Sign In unsuccessful"); 
     }
 
 
@@ -103,8 +103,7 @@ const Auth = () => {
             onSuccess={googleSuccess}
             onFailure={googleFailure}
             cookiePolicy="single_host_origin"
-            >
-          </GoogleLogin>
+            />
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
