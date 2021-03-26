@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import { Container, Grow, Grid } from '@material-ui/core';
+import { Container, Grow, Grid, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { getDevices } from '../../actions/devices';
 
 import Devices from '../Devices/Devices';
-import Form from '../Form/Form';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -17,14 +16,15 @@ const Home = () => {
     return (
       <Grow in>
         <Container>
-          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+          <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
             <Grid item xs={12} sm={7}>
              <Devices/>
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form />
-            </Grid>
+            <Button>
+             + Add Device
+            </Button>
           </Grid>
+          
         </Container>
       </Grow>
     );
