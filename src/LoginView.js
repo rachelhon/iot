@@ -3,29 +3,47 @@ import SignupView from './SignupView'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 import Card from 'react-bootstrap/Card'
+import App from './App'
+import UserView from './UserView'
 class LoginView extends React.Component
 {
     constructor(props) {
         super(props);
         this.state = {
-          username:'',
-          password:''
+          username:'Username',
+          password:'Password',
+          shows:false
         };
       }
-      handleusername(name)
+      handleusername(event)
       {
-          this.setState({username:name})
+          this.setState({username:event.target.value})
+           
+      }
+      handlepassword(event)
+      { 
+
+              this.setState({password:event.target.value})
+             
 
       }
-      handlepassword(password)
+      handlelogin()
+      {//fetch request comes here
+        this.props.handlelogin('abc')
+      
+      }
+      handlesignup()
       {
+        this.setState({shows:true})
 
-              this.setState({password:password})
 
       }
-    render() {
+       
+render() {
         return (
             <>
+           {
+             !this.state.shows?
           <div
           >
           <div
@@ -50,8 +68,9 @@ class LoginView extends React.Component
           >
           <TextField
            id="first-name"
-           label="UserName"
             margin="normal"
+            label={this.state.username}
+            onChange={(event)=>this.handleusername(event)}
                 /></div>
                 <br/>
                 <br/>
@@ -59,30 +78,31 @@ class LoginView extends React.Component
                  >
                 <TextField
                    id="first-name"
-                  label="Password"
+                  label={this.state.password}
                    margin="normal"
+                   onChange={(event)=>this.handlepassword(event)}
                 />
                 </div>
                 <br/>
                 <br/>
                 <div>
                      
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" onClick={()=>this.handlelogin()} >
                        Login
                     </Button></div>
                     <br/>
                     <br/>
                     <div>
                     
-                    <Button variant="contained" color="primary" >
+                    <Button variant="contained" color="primary" onClick={()=>this.handlesignup()} >
                         Signup</Button>
 
                 </div>
                 </Card.Body>
                 </Card>
           
-        </div>
-       
+        </div>:<SignupView/>
+                   }
         </>
         )
       }
