@@ -91,13 +91,13 @@ const Auth = () => {
             render={(renderProps) => (
               <Button 
                 className={classes.googleButton} 
-                color = "primary" 
+                color = "secondary" 
                 fullWidth 
                 onClick={renderProps.onClick} 
                 disabled = {renderProps.disabled}
                 startIcon={<Icon/>}
                 variant="contained">
-                Google Sign In
+                Sign in with Google
               </Button>
             )}
             onSuccess={googleSuccess}
@@ -106,7 +106,7 @@ const Auth = () => {
             />
           <Grid container justify="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
+              <Button onClick={switchMode} color="primary">
                 { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
               </Button>
             </Grid>

@@ -42,6 +42,7 @@ const Navbar = () => {
         </a>
       </div>
       <Toolbar className={classes.toolbar}>
+        {/* Display user's information based on their profile/ Google account */}
         {user ? (
           <div className={classes.profile}>
             <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
