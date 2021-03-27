@@ -59,7 +59,8 @@ const Auth = () => {
     };
 
     const googleFailure = () => {
-      alert("Google Sign In unsuccessful"); 
+      history.push('/auth');
+      //alert("Google Sign In unsuccessful"); 
     }
 
 

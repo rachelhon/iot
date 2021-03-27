@@ -11,6 +11,7 @@ export const signin = (formData, history) => async(dispatch) => {
         history.push('/home');
     } catch (error) {
         console.log(error);
+        alert("Incorrect username or password.");
     }
 };
 
@@ -26,5 +27,6 @@ export const signup = (formData, history) => async(dispatch) => {
         history.push('/home');
     } catch (error) {
         console.log(error.response);
+        alert("Google Sign Up unsuccessful");
     }
 };
