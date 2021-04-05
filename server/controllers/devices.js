@@ -13,6 +13,7 @@ export const getDevices = async (req, res) => {
     }
 }
 export const createDevice = async(req, res) => {
+
     const device = req.body;
     const newDevice = new DeviceMessage(device);
 
@@ -21,5 +22,5 @@ export const createDevice = async(req, res) => {
         res.status(201).json(newDevice);
     } catch (error) {
         res.status(409).json({ message: error.message });
-    }
+    } 
 }

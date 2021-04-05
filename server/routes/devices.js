@@ -1,8 +1,11 @@
 import express from 'express';
 import {getDevices, createDevice} from '../controllers/devices.js';
+
+
 const router = express.Router();
 
 router.get('/', getDevices);
-router.post('/', createDevice);
+// use auth middleware to prevent non-users to create device
+router.post('/',  createDevice);
 
 export default router;

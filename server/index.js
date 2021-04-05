@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import deviceRoutes from './routes/devices.js';
+import userRouter from './routes/users.js';
+
 
 const app = express();
 
@@ -11,6 +13,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/devices', deviceRoutes);
+app.use('/user', userRouter);
 
 const CONNECTION_URL = 'mongodb+srv://iot:123@cluster0.kmvh1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;
