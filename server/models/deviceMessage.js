@@ -7,6 +7,10 @@ const deviceSchema = mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    email: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
 })
 
 var DeviceMessage = mongoose.model('DeviceMessage', deviceSchema);

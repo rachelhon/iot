@@ -15,11 +15,9 @@ const Form = () => {
         dispatch(createDevice(deviceData));
 
     }
-
     const clear = () => {
       setDeviceData({deviceName: '', deviceID: ''});
     }
-
     return (
         
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>

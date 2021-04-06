@@ -1,50 +1,28 @@
 import React from 'react';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
 import Device from './Device/Device';
 import useStyles from './styles';
-class Devices extends React.Component
-{
-    constructor(props) {
-        super(props);
-        this.state = {
-          username:'Username',
-          password:'Password',
-          shows:false
-        };
-      }
-      list()
-      { 
-           var myObj,i
-           myObj = {
-            "Simcard": [
-              {"name":"Apple", "id":"1234566231"},
-              {"name":"Samsung", "id":"5213465361"},
-              {"name":"Reliance", "id":"3112312123" },
-              {"name":"motorolla", "id":"1267318223" }
-            ]
-          }
-          var disp=[]
-          for (i in myObj.Simcard) {
-             disp.push(<Device name={myObj.Simcard[i].name} id={myObj.Simcard[i].id}/>)
             }
-       return disp;
-
-      }
-       
-render() {
-        return (
-            <>
-           <div>
-               <h1>Your Devices</h1></div>
-           {this.list()}
-
-        </>
-        )
-      }
 
 
-}
+const Devices = ({ setCurrentId }) => {
+  const devices = useSelector((state) => state.devices);
+  const classes = useStyles();
 
+
+  return (
+    !devices.length ? <CircularProgress /> : (
+      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
+        {devices.map((device) => (
+          <Grid key={device._id} item xs={12} sm={6} md={6}>
+            <Device device={device} />
+          </Grid>
+        ))}
+      </Grid>
+    )
+  )
+};
 
 export default Devices;

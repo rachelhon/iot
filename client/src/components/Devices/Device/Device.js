@@ -1,43 +1,34 @@
 import React from 'react';
 import useStyles from './styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import { render } from '@testing-library/react';
-class Device extends React.Component{
-    render(){
+import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import moment from 'moment';
+import Auth from '../../Auth/Auth';
+
+const Device = ({ device, setCurrentId }) => {
+    const classes = useStyles();
+  
     return (
-        <div>
-           <Card  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor:'#C0C0C0'
-                  }}>
-              < CardContent
-               >
-                     <h3>Device Name: {this.props.name} </h3>
-                     <br/>
-                     <br/>
-                     <h3>Device ID: {this.props.id} </h3>
-                     <br/>
-                     <br/>
-                  <Button variant="contained" color="primary"  >
-                       Toggle Sim
-                    </Button>
-                    
-                   
-                    
-
-                
-                </CardContent>
-                </Card>
-                <br/>
-                <br/>
-
+        
+      <Card className={classes.card}>
+           <CardMedia className={classes.media} title={Auth.email} />
+        <div className={classes.overlay}>
+          <Typography variant="h6">{device.deviceName}</Typography>
+          <Typography variant="body2">{moment(device.createdAt).fromNow()}</Typography>
         </div>
-    );}}
-
-
+        <div className={classes.overlay2}>
+        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
+      </div>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">{device.deviceID}</Typography>
+        </CardContent>
+        <CardActions className={classes.cardActions}>
+          <Button size="small" color="primary" onClick={() => {}}><DeleteIcon fontSize="small" /> Delete</Button>
+        </CardActions>
+      </Card>
+    );
+  };
+  
 export default Device;
