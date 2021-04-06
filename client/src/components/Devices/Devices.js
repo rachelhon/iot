@@ -36,7 +36,7 @@ render() {
         return (
             <>
            <div>
-               <h1>The list of the devices are as follows</h1></div>
+               <h1>Your Devices</h1></div>
            {this.list()}
 
         </>

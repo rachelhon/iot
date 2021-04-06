@@ -17,10 +17,10 @@ class Device extends React.Component{
                   }}>
               < CardContent
                >
-                     <h3>The name of the device is {this.props.name} </h3>
+                     <h3>Device Name: {this.props.name} </h3>
                      <br/>
                      <br/>
-                     <h3>The ID of the device is {this.props.id} </h3>
+                     <h3>Device ID: {this.props.id} </h3>
                      <br/>
                      <br/>
                   <Button variant="contained" color="primary"  >
