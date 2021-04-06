@@ -17,3 +17,13 @@ export const createDevice = (device) => async (dispatch) => {
         console.log(error.message);
     }
 }
+
+export const deleteDevice = (id) => async (dispatch) => {
+    try {
+      await api.deleteDevice(id);
+  
+      dispatch({ type: 'DELETE', payload: id });
+    } catch (error) {
+        console.log(error.message);
+    }
+  };

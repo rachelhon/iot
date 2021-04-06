@@ -24,3 +24,11 @@ export const createDevice = async(req, res) => {
         res.status(409).json({ message: error.message });
     } 
 }
+export const deleteDevice = async (req, res) => {
+    const {id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No device with id: ${id}`);
+
+    await DeviceMessage.findByIdAndRemove(id);
+    res.json({ message: "Device deleted successfully." });
+}

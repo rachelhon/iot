@@ -17,3 +17,4 @@ export const createDevice = (newDevice) => API.post('/devices', newDevice);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
+export const deleteDevice = (id) => API.delete(`/devices/${id}`);

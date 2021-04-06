@@ -6,9 +6,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import Auth from '../../Auth/Auth';
+import { useDispatch } from 'react-redux';
 
+import {deleteDevice } from '../../../actions/devices';
 const Device = ({ device, setCurrentId }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
   
     return (
         
@@ -25,7 +28,7 @@ const Device = ({ device, setCurrentId }) => {
           <Typography variant="body2" color="textSecondary" component="p">{device.deviceID}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => {}}><DeleteIcon fontSize="small" /> Delete</Button>
+          <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
         </CardActions>
       </Card>
     );
