@@ -24,7 +24,7 @@ class Device extends React.Component{
                      <br/>
                      <br/>
                   <Button variant="contained" color="primary"  >
-                       ToggleSim
+                       Toggle Sim
                     </Button>
                     
                    
