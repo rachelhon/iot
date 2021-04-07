@@ -25,7 +25,7 @@ const Device = ({ device, setCurrentId }) => {
         <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
       </div>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">{device.deviceID}</Typography>
+          <Typography variant="body2" color="textSecondary" component="p">ID: {device.deviceID}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
