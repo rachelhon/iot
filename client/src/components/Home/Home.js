@@ -22,7 +22,8 @@ const Home = () => {
   return (
     <Grow in>
       <Container>
-        <Typography variant="h6" align="center">Your devices</Typography>
+        <Typography variant="h4" align="center">Your devices</Typography>
+        <br></br>
         <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
 
           <Grid item xs={12} sm={7}>
