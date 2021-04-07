@@ -1,11 +1,13 @@
 import express from 'express';
-import {getDevices, createDevice} from '../controllers/devices.js';
+import {getDevices, createDevice, deleteDevice} from '../controllers/devices.js';
 
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', getDevices);
+router.get('/getdevices', getDevices);
 // use auth middleware to prevent non-users to create device
-router.post('/',  createDevice);
+router.post('/createdevices',  createDevice);
+router.delete('/:id', auth, deleteDevice);
 
 export default router;

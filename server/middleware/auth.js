@@ -16,12 +16,12 @@ const auth = async(req, res, next) => {
             // verify() gives data for each specific token, since we are using secret key 'test', need to change in future dev
             decodedData = jwt.verify(token, secret);
 
-            req.userId = decodedData?.id;
+            req.userId = decodedData.id;
         } else {
             // for google OAuth token
             decodedData = jwt.decode(token);
             // sub is for google's name for specific id that differentiates every single google user
-            req.userId = decodedData?.sub;
+            req.userId = decodedData.sub;
         }
 
         // action (click the button) => auth middleware (next) => like controller...

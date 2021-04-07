@@ -12,7 +12,6 @@ const authReducer  = (state = {authData: null}, action) => {
             localStorage.clear();
             return { ...state, authData: null};
         default:
-            console.log('Authentication Reducer default checking');
             return state;
     }
 

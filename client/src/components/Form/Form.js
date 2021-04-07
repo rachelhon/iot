@@ -19,8 +19,6 @@ const Form = () => {
       deviceData.email = user?.result?.email;
       e.preventDefault();
       dispatch(createDevice(deviceData, history));
-      console.log(deviceData);
-      console.log("submitted device");
     }
 
     const handleChange = (e) => {

@@ -1,39 +1,37 @@
+  
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import {useDispatch} from 'react-redux';
-import {getDevices} from '../../../actions/devices';
-import { TextField, Button} from '@material-ui/core';
 import useStyles from './styles';
+import { render } from '@testing-library/react';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import moment from 'moment';
+import Auth from '../../Auth/Auth';
+import { useDispatch } from 'react-redux';
+import { deleteDevice } from '../../../actions/devices';
 
-const Device = () => {
+const Device = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    const getDevice= (e) => {
-        e.preventDefault();
-        const user = JSON.parse(localStorage.getItem('profile'));
-        console.log("getting device info");
-        console.log(user);
-        dispatch(getDevices(user?.result?.email)); 
-    }
-
     return (
-        <div>
-            <Card className={classes.Card}>
-                <CardContent>
-                    <h3>The name of the device is </h3>
-                     <br/>
-                     <br/>
-                     <h3>The ID of the device is </h3>
-                     <br/>
-                     <br/>
-                </CardContent>
-                <Button onClick ={getDevice}>getDevice</Button>
-            </Card>
-        </div>
-    );
+
+        <Card className={classes.card}>
+          <CardMedia className={classes.media} title={Auth.email} />
+          <CardContent>
+            <div className={classes.overlay}>
+              <Typography variant="h5">{props.device.deviceName} </Typography>
+            </div>
+            <Typography variant="body2" color="textPrimary" component="p">ID: {props.device.deviceID}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="body2" color="textSecondary">Added {moment(props.device.createdAt).fromNow()}</Typography>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Button size="small" color="primary"onClick={() => dispatch(deleteDevice(props.device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
+          </CardActions>
+        </Card>
+      );
 }
 
 

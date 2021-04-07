@@ -11,8 +11,9 @@ API.interceptors.request.use((req) => {
 });
 
 
-export const fetchDevices = () => API.get('/devices');
-export const createDevice = (newDevice) => API.post('/devices', newDevice);
+export const fetchDevices = (email) => API.get('/devices/getdevices', {params: email});
+export const createDevice = (newDevice) => API.post('/devices/createdevices', newDevice);
+export const deleteDevice = (id) => API.delete(`/devices/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);

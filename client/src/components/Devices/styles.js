@@ -16,4 +16,10 @@ export default makeStyles(() => ({
   image: {
     marginLeft: '15px',
   },
+  Card : {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:'#C0C0C0'
+  }
 }));
