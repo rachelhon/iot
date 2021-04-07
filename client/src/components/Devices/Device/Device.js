@@ -19,7 +19,7 @@ const Device = ({ device, setCurrentId }) => {
            <CardMedia className={classes.media} title={Auth.email} />
         <div className={classes.overlay}>
           <Typography variant="h6">{device.deviceName}</Typography>
-          <Typography variant="body2">{moment(device.createdAt).fromNow()}</Typography>
+          <Typography variant="body2">Added {moment(device.createdAt).fromNow()}</Typography>
         </div>
         <div className={classes.overlay2}>
         <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
