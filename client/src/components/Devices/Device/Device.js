@@ -15,7 +15,7 @@ const Device = ({ device, setCurrentId }) => {
 
   return (
 
-    <Card className={classes.card}>
+    <Card className={classes.card} >
       <CardMedia className={classes.media} title={Auth.email} />
       <CardContent>
         <div className={classes.overlay}>

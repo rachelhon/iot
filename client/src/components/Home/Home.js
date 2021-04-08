@@ -24,15 +24,17 @@ const Home = () => {
       <Container>
         <Typography variant="h4" align="center">Your devices</Typography>
         <br></br>
+
         <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
-
-          <Grid item xs={12} sm={7}>
-
-            <Devices />
-          </Grid>
           <Button variant="contained" color="primary" onClick={handleAddDevice}>
             + Add Device
             </Button>
+          <Grid item xs={12} sm={4} md={4}>
+
+            <Devices />
+          </Grid>
+
+          <br></br>
 
 
         </Grid>
