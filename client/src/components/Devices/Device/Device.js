@@ -29,7 +29,7 @@ const Device = ({ device, setCurrentId }) => {
         <Typography variant="body2" color="textPrimary" component="p">ID: {device.deviceID}</Typography>
       </CardContent>
       <CardContent>
-        <Typography variant="body2" color="textSecondary">Added {moment(device.createdAt).fromNow()}</Typography>
+        <Typography variant="body2" color="textSecondary">Added {moment().fromNow()}</Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
