@@ -4,30 +4,28 @@ import { render } from '@testing-library/react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import {deleteDevice } from '../../../actions/devices';
-const Device = ({ device, setCurrentId }) => {
+//import {deleteDevice } from '../../../actions/devices';
+const User = ({ device, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
   
     return (
         
       <Card className={classes.card}>
-           <CardMedia className={classes.media} title={device.deviceName} />
+           <CardMedia className={classes.media} title={user._id} />
         <div className={classes.overlay}>
-          <Typography variant="h6">{device.deviceName}</Typography>
-          <Typography variant="body2">{moment(device.createdAt).fromNow()}</Typography>
+          <Typography variant="h6">{user.email}</Typography>
         </div>
         <div className={classes.overlay2}>
-        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
+        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(user._id)}><MoreHorizIcon fontSize="default" /></Button>
       </div>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">{device.deviceID}</Typography>
+          <Typography variant="body2" color="textSecondary" component="p">{user._id}</Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
+          <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(user._id))}><DeleteIcon fontSize="small" /> Delete</Button>
         </CardActions>
       </Card>
     );

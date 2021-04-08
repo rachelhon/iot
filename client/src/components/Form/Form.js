@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { TextField, Button, Paper } from '@material-ui/core';
+import { TextField, Button, Paper, Card } from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import useStyles from './styles';
 import {createDevice} from '../../actions/devices';
+import deviceReducer from '../../reducers/devices';
 
 const Form = () => {
     const [deviceData, setDeviceData] = useState({
@@ -19,7 +20,6 @@ const Form = () => {
       setDeviceData({deviceName: '', deviceID: ''});
     }
     return (
-        
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField name="device name" variant="outlined" label="device name" fullWidth value={deviceData.deviceName} onChange={(e) => setDeviceData({ ...deviceData, deviceName: e.target.value })} />
           <br/>

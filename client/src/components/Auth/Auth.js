@@ -6,7 +6,7 @@ import {useDispatch} from 'react-redux';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {GoogleLogin} from 'react-google-login';
 import Input from './Input';
-import {signin, signup} from '../../actions/auth';
+import {signin, signup, signinAdmin} from '../../actions/auth';
 
 import Icon from './icon';
 
@@ -23,16 +23,23 @@ const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(initialState);
     const handleShowPassword = () => setShowPassword((prevShowPAssword) => !prevShowPAssword);
-
+    const isAdmin = false;
 
     const handleSubmit = (e) => {
       e.preventDefault();
       //console.log(formData);
+  
       if (isSignup) {
         // send formData for data, history for navigation
         dispatch(signup(formData, history));
       } else {
+        if (formData.email == 
+          "admin@gmail.com") {
+          dispatch(signinAdmin(formData, history));
+        }
+        else{
         dispatch(signin(formData, history));
+        }
       }
     }
     const handleChange = (e) => {
