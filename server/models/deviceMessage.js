@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 
 const deviceSchema = mongoose.Schema({
-    deviceName: String,
-    deviceID: String,
+    deviceName: {type: String, required: true},
+    deviceID: {type: String, required: true},
+    email: {type: String},
     createdAt: {
         type: Date,
         default: new Date(),

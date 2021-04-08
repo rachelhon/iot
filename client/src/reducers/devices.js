@@ -1,7 +1,8 @@
-import Devices from "../components/Devices/Devices"
 
-export default (devices = [], action) => {
+const deviceReducer = (devices = [], action) => {
     switch (action.type) {
+        case 'DELETE':
+            return devices.filter((device) => device._id !== action.payload);
         case 'FETCH_ALL':
             return action.payload;
         case 'CREATE':
@@ -11,3 +12,5 @@ export default (devices = [], action) => {
     }
 
 };
+
+export default deviceReducer;
