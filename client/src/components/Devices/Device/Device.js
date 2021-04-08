@@ -5,9 +5,10 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import Auth from '../../Auth/Auth';
 import { useDispatch } from 'react-redux';
 
-import {deleteDevice } from '../../../actions/devices';
+import { deleteDevice } from '../../../actions/devices';
 const Device = ({ device, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -15,23 +16,26 @@ const Device = ({ device, setCurrentId }) => {
   return (
 
     <Card className={classes.card} style={{ backgroundColor: "floralwhite" }}>
-           <CardMedia className={classes.media} title={device.deviceName} />
-
+      <CardMedia className={classes.media} title={Auth.email} />
+      <CardContent>
         <div className={classes.overlay}>
-          <Typography variant="h6">{device.deviceName}</Typography>
-          <Typography variant="body2">{moment(device.createdAt).fromNow()}</Typography>
+          <Typography variant="h5">{device.deviceName} </Typography>
         </div>
-        <div className={classes.overlay2}>
-        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
+      </CardContent>
+      <div className={classes.overlay2}>
+        <Button style={{ color: 'black' }} size="small" onClick={() => setCurrentId(device._id)}><MoreHorizIcon fontSize="default" /></Button>
       </div>
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">{device.deviceID}</Typography>
-        </CardContent>
-        <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
-        </CardActions>
-      </Card>
-    );
-  };
-  
+      <CardContent>
+        <Typography variant="body2" color="textPrimary" component="p">ID: {device.deviceID}</Typography>
+      </CardContent>
+      <CardContent>
+        <Typography variant="body2" color="textSecondary">Added {moment().fromNow()}</Typography>
+      </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Button size="small" color="primary" onClick={() => dispatch(deleteDevice(device._id))}><DeleteIcon fontSize="small" /> Delete</Button>
+      </CardActions>
+    </Card>
+  );
+};
+
 export default Device;

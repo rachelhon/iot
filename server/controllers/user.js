@@ -33,35 +33,6 @@ export const signin = async(req, res) => {
     }
 }
 
-export const signinAdmin = async(req, res) => {
-    const {email, password} = req.body;
-
-    try {
-        // interact with DB to find one matching email
-        const existingUser = await userModel.findOne({email});
-
-        if (!existingUser) {
-            return res.status(404).json({message: "User does not exist"});
-        }
-
-        // use bcrypt to compare passwords
-        const isPassword = await bcrypt.compare(password, existingUser.password);
-
-        if (!isPassword) {
-            return res.status(400).json({message: "Password does not match"});
-        }
-
-        // make a token to store data
-        // TODO second argument of jwt.sign is secret, later we have to make a env file to store this secret val, 
-        // right now we use test for tmp secret
-        const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', {expiresIn: "1h"});
-
-        res.status(200).json({result:existingUser, token});
-    } catch (error) {
-        res.status(500).json({message: "Building token for response has failed"});
-    }
-}
-
 export const signup = async(req, res) => {
     const {firstName, lastName, email, password} = req.body;
     console.log("received data");
