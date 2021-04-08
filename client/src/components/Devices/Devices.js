@@ -18,7 +18,7 @@ const Devices = () => {
   }, [dispatch]);
 
   return (
-    !devices.length ? <CircularProgress /> : (
+    !devices.length ? <div>Device list is empty, please add devices</div> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {devices.map((device) => (
           <Grid key={device._id} item xs={12} sm={6} md={6}>
