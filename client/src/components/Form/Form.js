@@ -14,20 +14,10 @@ const Form = () => {
         deviceName: '', deviceID: ''});
     const classes = useStyles();
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const handleSubmit = (e) => {
-        if(deviceData.deviceName == "" || deviceData.deviceID == ""){
-          alert("Please enter a device name and ID.")
-        }
-        else{
-          alert("Device added successfully!");
-          e.preventDefault();
-          dispatch(createDevice(deviceData));
-          clear();
-        }
-        
-
+        e.preventDefault();
+        dispatch(createDevice(deviceData));
 
     }
     const clear = () => {
