@@ -12,7 +12,7 @@ const Devices = ({ setCurrentId }) => {
 
 
   return (
-    !devices.length ? <Typography variant="body2" color="textPrimary" component="p">No devices found. Add one below.</Typography> : (
+    !devices.length ? <Typography variant="body2" color="textPrimary" component="p">No devices found. Please add a device.</Typography> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {devices.map((device) => (
           <Grid key={device._id} item xs={12} sm={12} md={12}>

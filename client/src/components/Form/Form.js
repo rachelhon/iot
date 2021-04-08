@@ -3,16 +3,27 @@ import { TextField, Button, Paper } from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import useStyles from './styles';
 import {createDevice} from '../../actions/devices';
+import { useHistory } from 'react-router-dom';
 
 const Form = () => {
     const [deviceData, setDeviceData] = useState({
         deviceName: '', deviceID: ''});
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(createDevice(deviceData));
+        if(deviceData.deviceName == "" || deviceData.deviceID == ""){
+          alert("Please enter a device name and ID.")
+        }
+        else{
+          alert("Device added successfully!");
+          e.preventDefault();
+          dispatch(createDevice(deviceData));
+          clear();
+        }
+        
+
 
     }
     const clear = () => {

@@ -8,8 +8,8 @@ import Auth from './components/Auth/Auth';
 import AddDevice from './components/AddDevice/AddDevice';
 
 const App = () => (
-  <BrowserRouter>
-    <Container maxWidth="lg">
+  <BrowserRouter >
+    <Container maxWidth="lg" >
       <Navbar />
       <Switch>
         <Route path="/auth" exact component={Auth}/>
