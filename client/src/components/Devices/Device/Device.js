@@ -9,13 +9,14 @@ import { useDispatch } from 'react-redux';
 
 import {deleteDevice } from '../../../actions/devices';
 const Device = ({ device, setCurrentId }) => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-  
-    return (
-        
-      <Card className={classes.card}>
+  const classes = useStyles();
+  const dispatch = useDispatch();
+
+  return (
+
+    <Card className={classes.card} style={{ backgroundColor: "floralwhite" }}>
            <CardMedia className={classes.media} title={device.deviceName} />
+
         <div className={classes.overlay}>
           <Typography variant="h6">{device.deviceName}</Typography>
           <Typography variant="body2">{moment(device.createdAt).fromNow()}</Typography>
