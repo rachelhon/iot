@@ -6,6 +6,7 @@ import userModel from '../models/user.js';
 // all controller has request and response
 export const signin = async(req, res) => {
     const {email, password} = req.body;
+    let isAdmin = false;
 
     try {
         // interact with DB to find one matching email
@@ -13,6 +14,12 @@ export const signin = async(req, res) => {
 
         if (!existingUser) {
             return res.status(404).json({message: "User does not exist"});
+        }
+
+        // manual check
+        if (existingUser.email == "admin@gmail.com") {
+            isAdmin = true;
+            console.log(existingUser);
         }
 
         // use bcrypt to compare passwords
@@ -26,8 +33,13 @@ export const signin = async(req, res) => {
         // TODO second argument of jwt.sign is secret, later we have to make a env file to store this secret val, 
         // right now we use test for tmp secret
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, 'test', {expiresIn: "1h"});
-
-        res.status(200).json({result:existingUser, token});
+        if (isAdmin) {
+            const adminUser = {email: existingUser.email, name: existingUser.name, id: existingUser._id, password: existingUser.password, isAdmin: true};
+            res.status(200).json({result:adminUser, token});
+        } else {
+            res.status(200).json({result:existingUser, token});
+        }
+        
     } catch (error) {
         res.status(500).json({message: "Building token for response has failed"});
     }
@@ -35,8 +47,9 @@ export const signin = async(req, res) => {
 
 export const signup = async(req, res) => {
     const {firstName, lastName, email, password} = req.body;
-    console.log("received data");
-    console.log(firstName, lastName, email, password);
+    console.log(req.body);
+
+    
     try {
         const existingUser = await userModel.findOne({email});
 
@@ -48,6 +61,7 @@ export const signup = async(req, res) => {
         const hashedPassword = await bcrypt.hash(password, 12);
 
         const result = await userModel.create({email, password: hashedPassword, name: `${firstName} ${lastName}`});
+        console.log(result);
 
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'});
 
