@@ -16,16 +16,16 @@ const Form = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
-      if(deviceData.deviceName == "" || deviceData.deviceID == ""){
-        alert("Please enter a device name and ID.")
-      }
-      else{
-        alert("Device added successfully!");
-        e.preventDefault();
-        dispatch(createDevice(deviceData));
-        clear();
-      }
-      
+         if(deviceData.deviceName == "" || deviceData.deviceID == ""){
+          alert("Please enter a device name and ID.")
+        }
+        else{
+          alert("Device added successfully!");
+          e.preventDefault();
+          dispatch(createDevice(deviceData));
+          clear();
+        }
+        
 
 
     }
