@@ -13,7 +13,6 @@ import { deleteDevice } from '../../../actions/devices';
 const Device = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    console.log(props);
     return (
 
         <Card className={classes.card}>

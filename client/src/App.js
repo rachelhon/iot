@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
 import AddDevice from './components/AddDevice/AddDevice';
 import AdminHome from './components/AdminHome/AdminHome';
+import AddUser from './components/AddUser/AddUser';
 
 const App = () => (
   <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => (
         <Route path="/home" exact component={Home}/>
         <Route path="/addDevice" exact component={AddDevice}/>
         <Route path="/adminHome" exact component={AdminHome}/>
+        <Route path="/addUser" exact component={AddUser}/>
       </Switch>
     </Container>
   </BrowserRouter>

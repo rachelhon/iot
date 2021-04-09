@@ -6,6 +6,11 @@ import {useHistory} from 'react-router-dom';
 const AdminHome = () => {
   const history = useHistory();
 
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    history.push('/addUser');
+  }
+
   return (
     <Grow in>
       <Container>
@@ -15,7 +20,7 @@ const AdminHome = () => {
 
           <Grid item xs={12} sm={7}>
           </Grid>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleAddUser}>
             + Add Users
             </Button>
 
