@@ -11,7 +11,7 @@ const Home = () => {
   
     const handleAddDevice = (e) => {
       e.preventDefault();
-      history.push('/AddDevice');
+      history.push('/addDevice');
     }
 
     return (

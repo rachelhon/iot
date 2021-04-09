@@ -12,7 +12,6 @@ export const getDevices = (email) => async (dispatch) => {
 }
 
 export const createDevice = (deviceData, history) => async (dispatch) => {
-    console.log(deviceData);
     try{
         const {data} = await api.createDevice(deviceData);
         dispatch({type: CREATE, payload: data});

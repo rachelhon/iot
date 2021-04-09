@@ -7,9 +7,7 @@ export const signin = (formData, history) => async(dispatch) => {
         const {data} = await api.signIn(formData);
         dispatch({type: AUTH, data});
         const user = JSON.parse(localStorage.getItem('profile'));
-        console.log(user.result?.isAdmin);
         if (user.result?.isAdmin) {
-            console.log(user.result);
             history.push('/AdminHome');
         } else {
             history.push('/home');
