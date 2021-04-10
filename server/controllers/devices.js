@@ -8,7 +8,7 @@ export const getDevices = async (req, res) => {
     console.log("getDevice in backend");
     try{
         const deviceMessages = await DeviceMessage.find({email});
-        
+        console.log(deviceMessages);
         res.status(200).json(deviceMessages);
     } catch (error) {
         res.status(404).json({ message: error.message });

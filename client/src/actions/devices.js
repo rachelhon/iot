@@ -23,6 +23,7 @@ export const createDevice = (deviceData, history) => async (dispatch) => {
 }
 
 export const deleteDevice = (id) => async (dispatch) => {
+    console.log('deleteDevice with id: ' + id);
     try {
       await api.deleteDevice(id);
   
