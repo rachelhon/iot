@@ -81,9 +81,9 @@ describe('DB test', () => {
   test ("User Login", async() => {
     // test is naively implemented, it does not test any encryptions
     const existingUser = await User.findOne({testEmail});
-    expect(existingUser).not.toEqual(null);
+    //expect(existingUser).not.toEqual(null);
+    console.log(existingUser);
     if (existingUser) {
-      console.log(existingUser);
       expect(existingUser.email).toEqual(testEmail);
     }
   });
