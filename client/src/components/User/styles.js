@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
     align: 'center',
     color: 'primary',
   },
-  deviceList: {
+  userList: {
     border: '1px solid'
   },
   Card : {

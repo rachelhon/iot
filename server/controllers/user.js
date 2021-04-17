@@ -71,4 +71,14 @@ export const signup = async(req, res) => {
     }
 }
 
+// all controller has request and response
+export const getUsers = async(req, res) => {
+    try {
+        // interact with DB to find one matching email
+        const existingUsers = await userModel.find();
 
+        res.status(200).json(existingUsers);
+    } catch (error) {
+        res.status(500).json({message: "Building token for response has failed"});
+    }
+}

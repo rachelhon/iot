@@ -26,13 +26,14 @@ export default makeStyles((theme) => ({
     align: 'center',
     color: 'primary',
   },
-  deviceList: {
+  userList: {
     border: '1px solid'
   },
-  Card : {
+  Button : {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:'#C0C0C0'
+    padding: '10px',
+    size: "small",
+    variant: "contained",
+    href: "#outlined-buttons",
   }
 }));

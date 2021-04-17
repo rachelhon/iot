@@ -11,16 +11,10 @@ export default makeStyles(() => ({
     alignItems: 'center',
   },
   heading: {
+    
     color: 'rgba(158,29,33)',
   },
   image: {
     marginLeft: '15px',
   },
-  text: {
-    marginright: '10px',
-    border: '1px solid'
-  },
-  Item : {
-    border: '1px solid'
-  }
 }));

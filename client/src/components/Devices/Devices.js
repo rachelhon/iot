@@ -4,7 +4,8 @@ import Device from './Device/Device';
 import { useSelector } from 'react-redux';
 import useStyles from './styles';
 import { getDevices } from '../../actions/devices';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Typography, List} from '@material-ui/core';
+import { generatePath } from 'react-router';
 
 const Devices = () => {
   const dispatch = useDispatch();
@@ -19,13 +20,16 @@ const Devices = () => {
 
   return (
     !devices.length ? <div>Device list is empty, please add devices</div> : (
-      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-        {devices.map((device) => (
-          <Grid key={device._id} item xs={12} sm={6} md={6}>
-            <Device device={device} />
-          </Grid>
-        ))}
-      </Grid>
+      <div className={classes.root}>
+        <div className={classes.deviceList}>
+          <List>
+            {devices.map((device) => (
+              <Device device={device} />
+            ))}
+          </List>
+        </div>
+
+      </div>
     )
   );
 }

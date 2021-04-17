@@ -40,7 +40,7 @@ const Navbar = () => {
         {user ? (
           <Typography component={Link} to="/home" className={classes.heading} variant="h5" align="center">IoT Tracking App</Typography>
         ) : (
-          <Typography component={Link} to="/auth" className={classes.heading} variant="h5" align="center">IoT Tracking App</Typography>
+          <Typography component={Link} to="/" className={classes.heading} variant="h5" align="center">IoT Tracking App</Typography>
         )}
         <a href="http://f3wireless.com/">
           <img className={classes.image} src={logo} alt="f3 wireless logo" height="60" />

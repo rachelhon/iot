@@ -1,4 +1,4 @@
-import {AUTH} from '../constants/actionTypes';
+import {AUTH, FETCH} from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 
@@ -35,3 +35,12 @@ export const signup = (formData, history) => async(dispatch) => {
         alert("Sign up unsuccessful");
     }
 };
+
+export const getusers = () => async(dispatch) => {
+    try {
+        const {data} = await api.getUsers();
+        dispatch({type: FETCH, payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
