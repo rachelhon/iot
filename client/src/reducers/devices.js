@@ -7,6 +7,8 @@ const deviceReducer = (devices = [], action) => {
             return action.payload;
         case 'CREATE':
             return [...devices, action.payload];
+        case 'SEND_DEVICE_DATA':
+            return action.payload;    
         default:
             return devices;
     }

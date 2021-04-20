@@ -13,17 +13,14 @@ const AdminHome = () => {
 
   return (
     <Grow in>
-      <Container>
+      <Container align= "center">
         <Typography variant="h4" align="center">Users List</Typography>
         <br></br>
-        <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <Users/>
-          </Grid>
-          <Button variant="contained" color="primary" onClick ={handleAddUser}>
-            + Add Users
-            </Button>
-        </Grid>
+        <Users/>
+        <br></br>
+        <Button variant="outlined" color="primary" onClick ={handleAddUser}>
+          + Add Users
+        </Button>
 
       </Container>
     </Grow>

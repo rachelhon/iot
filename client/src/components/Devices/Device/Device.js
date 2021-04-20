@@ -1,21 +1,28 @@
 import React from 'react';
 import useStyles from './styles';
 import {useHistory} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { ListItemText, ListItem, Button} from '@material-ui/core/';
-import moment from 'moment';
+import { sendDeviceData } from '../../../actions/devices';
+
+
 
 const Device = (props) => {
     const classes = useStyles();
     const history = useHistory();
+    const dispatch = useDispatch();
+
     const handleView = (e) => {
       e.preventDefault();
-      history.push('/viewDevice');
+      dispatch(sendDeviceData(props, history));
     }
 
     return (
-      <ListItem className = {classes.Item}>
-        <ListItemText className = {classes.text}>Device Name: {props.device.deviceName} Device ID: {props.device.deviceID}</ListItemText>
-        <Button variant="contained" color="black" onClick = {handleView}> View </Button>
+      <ListItem>
+        <ListItemText className = {classes.text}>Device Name: {props.device.deviceName} </ListItemText>
+        <br></br>
+        <br></br>
+        <Button variant="contained" color="black" className={classes.button} onClick = {handleView}> View </Button>
       </ListItem>
       );
 }

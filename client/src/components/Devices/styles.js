@@ -27,12 +27,8 @@ export default makeStyles((theme) => ({
     color: 'primary',
   },
   deviceList: {
-    border: '1px solid'
-  },
-  Card : {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:'#C0C0C0'
+    border: '1px solid',
+    borderRadius: '25px',
+    color: 'primary'
   }
 }));

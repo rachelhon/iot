@@ -27,7 +27,6 @@ const Users = (props) => {
           ))}
         </List>
       </div>
-
     </div>
     )
   );

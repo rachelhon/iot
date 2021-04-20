@@ -29,11 +29,7 @@ export default makeStyles((theme) => ({
   userList: {
     border: '1px solid'
   },
-  Button : {
-    display: "flex",
-    padding: '10px',
-    size: "small",
-    variant: "contained",
-    href: "#outlined-buttons",
+  button: {
+    magin: theme.spacing(1)
   }
 }));

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { TextField, Button} from '@material-ui/core';
+import {Typography, TextField, Button} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useStyles from './styles';
@@ -25,23 +25,25 @@ const Form = () => {
       setDeviceData({...deviceData, [e.target.name]: e.target.value});
     }
 
-    const clear = () => {
-      setDeviceData({deviceName: '', deviceID: '', email: ''});
+    const cancel = (e) => {
+      e.preventDefault();
+      history.push('/home');
     }
 
     return (
         
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+          <Typography variant="h6" className={classes.header}>
+            Please add device name and device ID
+          </Typography>
           <TextField name="deviceName" variant="outlined" label="device name" onChange={handleChange} />
           <br/>
           <br/>
           <TextField name="deviceID" variant="outlined" label="device ID" onChange={handleChange} />
           <br/>
           <br/>
-          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" >Submit</Button>
-          <br/>
-          <br/>
-          <Button variant="contained" color="secondary" size="large" onClick={clear} >Clear</Button>
+          <Button className={classes.button} variant="contained" color="primary" size="large" type="submit" >Submit</Button>
+          <Button className={classes.button} variant="contained" color="secondary" size="large" onClick={cancel} >CANCEL</Button>
         </form>
      
     );

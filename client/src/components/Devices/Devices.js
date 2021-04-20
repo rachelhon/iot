@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useEffect} from 'react';
 import Device from './Device/Device';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { getDevices } from '../../actions/devices';
-import { Typography, List} from '@material-ui/core';
-import { generatePath } from 'react-router';
+import { List } from '@material-ui/core';
 
 const Devices = () => {
   const dispatch = useDispatch();

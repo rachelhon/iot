@@ -1,8 +1,8 @@
 import * as api from '../api';
-import {CREATE, FETCH_ALL} from '../constants/actionTypes';
+import {CREATE, FETCH_ALL, SEND_DEVICE_DATA} from '../constants/actionTypes';
 
 export const getDevices = (email) => async (dispatch) => {
-    console.log("fetching devices with email: " + email);
+    //console.log("fetching devices with email: " + email);
     try {
         const {data} = await api.fetchDevices({params: email});
         dispatch({type: FETCH_ALL, payload: data});
@@ -12,23 +12,33 @@ export const getDevices = (email) => async (dispatch) => {
 }
 
 export const createDevice = (deviceData, history) => async (dispatch) => {
-    console.log(deviceData);
     try{
         const {data} = await api.createDevice(deviceData);
         dispatch({type: CREATE, payload: data});
         history.push('/home');
     } catch(error){
+        alert('Please add valid device name and ID');
         console.log(error.message);
     }
 }
 
-export const deleteDevice = (id) => async (dispatch) => {
+export const deleteDevice = (id, history) => async (dispatch) => {
     console.log('deleteDevice with id: ' + id);
     try {
       await api.deleteDevice(id);
   
       dispatch({ type: 'DELETE', payload: id });
+      history('/home');
     } catch (error) {
         console.log(error.message);
     }
 };
+
+export const sendDeviceData = (deviceData, history) => async(dispatch) => {
+    try {
+        dispatch({type: SEND_DEVICE_DATA, payload: deviceData});
+        history.push('viewDevice');
+    } catch (error) {
+        console.log(error.message);
+    }
+}

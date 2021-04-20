@@ -6,7 +6,7 @@ const AddDevice = () => {
 
     return (
         <Grow in>
-            <Container>
+            <Container align="center">
                 <Form/>
             </Container>
         </Grow>
