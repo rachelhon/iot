@@ -1,4 +1,4 @@
-import {AUTH} from '../constants/actionTypes';
+import {AUTH, FETCH} from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 
@@ -33,3 +33,26 @@ export const signup = (formData, history) => async(dispatch) => {
         alert("Sign up unsuccessful");
     }
 };
+
+
+export const adminSignUp = (formData, history) => async(dispatch) => {
+    try {        
+        // this calls to database (backend)
+        const {data} = await api.signUp(formData);
+        dispatch({type: AUTH, data});
+        history.push('/AdminHome');
+        alert('Adding new user succeeded');
+    } catch (error) {
+        console.log(error.response);
+        alert("Sign up unsuccessful");
+    }
+};
+
+export const getusers = () => async(dispatch) => {
+    try {
+        const {data} = await api.getUsers();
+        dispatch({type: FETCH, payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

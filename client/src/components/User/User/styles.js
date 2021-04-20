@@ -16,11 +16,20 @@ export default makeStyles((theme) => ({
   image: {
     marginLeft: '15px',
   },
-  button: {
-    margin: theme.spacing(1)
+  root: {
+    flexGrow: 1,
+    maxWidth: 752,
+    align: 'center',
   },
-  header: {
-    padding: theme.spacing(1),
-    backgroundColor: theme.palette.background.paper
+  title: {
+    margin: theme.spacing(4, 0, 2),
+    align: 'center',
+    color: 'primary',
+  },
+  userList: {
+    border: '1px solid'
+  },
+  button: {
+    magin: theme.spacing(1)
   }
 }));

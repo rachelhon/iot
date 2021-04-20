@@ -16,11 +16,10 @@ export default makeStyles((theme) => ({
   image: {
     marginLeft: '15px',
   },
-  button: {
+  root: {
     margin: theme.spacing(1)
   },
-  header: {
-    padding: theme.spacing(1),
-    backgroundColor: theme.palette.background.paper
+  button : {
+    margin: theme.spacing(1)
   }
 }));

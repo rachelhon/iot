@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useEffect} from 'react';
 import Device from './Device/Device';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { getDevices } from '../../actions/devices';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { List } from '@material-ui/core';
 
 const Devices = () => {
   const dispatch = useDispatch();
@@ -19,13 +18,16 @@ const Devices = () => {
 
   return (
     !devices.length ? <div>Device list is empty, please add devices</div> : (
-      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-        {devices.map((device) => (
-          <Grid key={device._id} item xs={12} sm={12} md={12}>
-            <Device device={device} />
-          </Grid>
-        ))}
-      </Grid>
+      <div className={classes.root}>
+        <div className={classes.deviceList}>
+          <List>
+            {devices.map((device) => (
+              <Device device={device} />
+            ))}
+          </List>
+        </div>
+
+      </div>
     )
   );
 }

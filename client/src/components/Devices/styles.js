@@ -1,7 +1,7 @@
 
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   appBar: {
     borderRadius: 15,
     margin: '30px 0',
@@ -16,10 +16,19 @@ export default makeStyles(() => ({
   image: {
     marginLeft: '15px',
   },
-  Card : {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:'#C0C0C0'
+  root: {
+    flexGrow: 1,
+    maxWidth: 752,
+    align: 'center',
+  },
+  title: {
+    margin: theme.spacing(4, 0, 2),
+    align: 'center',
+    color: 'primary',
+  },
+  deviceList: {
+    border: '1px solid',
+    borderRadius: '25px',
+    color: 'primary'
   }
 }));
