@@ -16,9 +16,9 @@
 
 ### TODO
 1. Make device name edit button change device's name
-2. Make a heading for Devices instead of having "Device Name: " before each device
+2. Make a heading for Devices instead of having "Device Name: " before each device - Austin
 3. Make devices deleteable/ unregestered
 4. Enable SIM card toggling
-5. Make device page view centered to be consistent with home page
+5. Make device page view centered to be consistent with home page - Austin
 
 
