@@ -9,6 +9,7 @@ import AddDevice from './components/AddDevice/AddDevice';
 import AdminHome from './components/AdminHome/AdminHome';
 import ViewDevice from './components/ViewDevice/ViewDevice';
 import AddUser from './components/AddUser/AddUser';
+import AdminViewDevice from './components/AdminViewDevice/AdminViewDevice';
 
 const App = () => (
   <BrowserRouter>
@@ -22,6 +23,7 @@ const App = () => (
         <Route path="/adminHome" exact component={AdminHome}/>
         <Route path="/viewDevice" exact component={ViewDevice}/>
         <Route path="/addUser" exact component={AddUser}/>
+        <Route path="/adminViewDevice" exact component={AdminViewDevice}/>
       </Switch>
     </Container>
   </BrowserRouter>

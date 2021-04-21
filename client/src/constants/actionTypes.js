@@ -1,4 +1,5 @@
 export const AUTH = 'AUTH';
+export const SEND_USER_DATA = 'SEND_USER_DATA';
 export const LOGOUT = 'LOGOUT';
 
 export const CREATE = 'CREATE';

@@ -11,14 +11,14 @@ const Users = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const users = useSelector((state) => state.users);
-  console.log(users);
+  //console.log(users);
 
   useEffect(() => {
     dispatch(getusers());
   }, [dispatch]);
 
   return (
-    !users.length ? <div>User list is empty, please add users</div> : (
+    !users.length ? <div>There are no users, please sign up</div> : (
     <div className={classes.root}>
       <div className={classes.userList}>
         <List className={classes.list}>

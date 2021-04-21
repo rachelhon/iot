@@ -1,4 +1,3 @@
-
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
@@ -31,6 +30,7 @@ export default makeStyles((theme) => ({
     borderRadius: '25px'
   },
   list: {
+    maxHeight: '50%', 
     overflow: 'auto'
   }
 }));

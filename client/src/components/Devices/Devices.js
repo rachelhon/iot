@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Device from './Device/Device';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
@@ -8,10 +8,17 @@ import { List } from '@material-ui/core';
 const Devices = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem('profile')); 
   const devices = useSelector((state) => state.devices);
-  const email = user?.result?.email;
-  
+  const user = useSelector((state) => state.users);
+  let email = '';
+  if (user.authData?.result != null) {
+    email =  user.authData?.result?.email;
+  }
+
+  if (user?.user?.email != null) {
+    email =  user.user.email;
+  }
+
   useEffect(() => {
     dispatch(getDevices(email));
   }, [dispatch]);

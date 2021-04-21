@@ -2,7 +2,7 @@ import * as api from '../api';
 import {CREATE, FETCH_ALL, SEND_DEVICE_DATA} from '../constants/actionTypes';
 
 export const getDevices = (email) => async (dispatch) => {
-    //console.log("fetching devices with email: " + email);
+    console.log("fetching devices with email: " + email);
     try {
         const {data} = await api.fetchDevices({params: email});
         dispatch({type: FETCH_ALL, payload: data});

@@ -2,20 +2,22 @@ import React from 'react';
 import useStyles from './styles';
 import {useHistory} from 'react-router-dom';
 import { ListItemText, ListItem, Button} from '@material-ui/core/';
-
+import { useDispatch } from 'react-redux';
+import { sendUserData } from '../../../actions/auth';
 
 const User = (props) => {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
   const handleSeeDevice = (e) => {
     e.preventDefault();
-    
+    dispatch(sendUserData(props));
+    history.push('/AdminViewDevice');
   }
-  // console.log(props);
+  
   const deleteUser = () => {
 
   }
-  
   return (
     <ListItem className = {classes.Item}>
         <ListItemText className = {classes.text}>User Name: {props.user.name} User email: {props.user.email}</ListItemText>
