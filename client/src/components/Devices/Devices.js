@@ -11,7 +11,7 @@ const Devices = () => {
   const user = JSON.parse(localStorage.getItem('profile')); 
   const devices = useSelector((state) => state.devices);
   const email = user?.result?.email;
-
+  
   useEffect(() => {
     dispatch(getDevices(email));
   }, [dispatch]);

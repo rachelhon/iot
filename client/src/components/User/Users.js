@@ -21,7 +21,7 @@ const Users = (props) => {
     !users.length ? <div>User list is empty, please add users</div> : (
     <div className={classes.root}>
       <div className={classes.userList}>
-        <List>
+        <List className={classes.list}>
           {users.map((user) => (
             <User user={user} />
           ))}

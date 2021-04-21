@@ -2,11 +2,17 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import DeviceMessage from '../models/deviceMessage.js';
+import {admin} from "../constants/adminEmail.js";
 
 export const getDevices = async (req, res) => {
     const email = req.query['params'];
-    console.log("getDevice in backend");
+
     try{
+        if (email == admin) {
+            const deviceMessages = await DeviceMessage.find();
+            res.status(200).json(deviceMessages);
+            return;
+        }
         const deviceMessages = await DeviceMessage.find({email});
         console.log(deviceMessages);
         res.status(200).json(deviceMessages);

@@ -4,6 +4,7 @@ import { Typography, Button, TextField, Grow, Container} from '@material-ui/core
 import {useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteDevice } from '../../actions/devices';
+import {admin} from "../../constants/adminEmail";
 import useStyles from './styles.js';
 
 const ViewDevices = () => {
@@ -11,11 +12,17 @@ const ViewDevices = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const data = useSelector((state) => state.devices);
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const email = user?.result?.email; 
   console.log(data); 
 
   const returnDevice = (e) => {
     e.preventDefault();
-    history.push('/home');
+    if (email == admin) {
+      history.push('/AdminHome');
+    } else {
+      history.push('/home');
+    }
   }
 
   const deleteDevice = (e) => {

@@ -29,5 +29,8 @@ export default makeStyles((theme) => ({
   userList: {
     border: '1px solid',
     borderRadius: '25px'
+  },
+  list: {
+    overflow: 'auto'
   }
 }));

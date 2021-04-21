@@ -27,7 +27,7 @@ const Form = () => {
 
     const cancel = (e) => {
       e.preventDefault();
-      history.push('/home');
+      history.push('/AdminHome');
     }
 
     return (
