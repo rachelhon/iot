@@ -82,3 +82,22 @@ export const getUsers = async(req, res) => {
         res.status(500).json({message: "Building token for response has failed"});
     }
 }
+
+
+export const deleteUsers = async(req, res) => {
+    console.log(req.params);
+    const {id} = req.params;
+    console.log(id);
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send(`No user with id: ${id}`);
+        }
+        userModel.findByIdAndDelete(id);
+        console.log('success?');
+        res.status(200).json({ message: "User deleted successfully." });
+    } catch (error) {
+        res.status(500).json({
+            message: "Deleting the user has failed"
+        });
+    }
+}

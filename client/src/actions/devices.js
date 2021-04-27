@@ -1,5 +1,5 @@
 import * as api from '../api';
-import {CREATE, FETCH_ALL, SEND_DEVICE_DATA} from '../constants/actionTypes';
+import {CREATE, FETCH_ALL, SEND_DEVICE_DATA, DELETE_DEVICE} from '../constants/actionTypes';
 
 export const getDevices = (email) => async (dispatch) => {
     console.log("fetching devices with email: " + email);
@@ -27,7 +27,7 @@ export const deleteDevice = (id, history) => async (dispatch) => {
     try {
       await api.deleteDevice(id);
   
-      dispatch({ type: 'DELETE', payload: id });
+      dispatch({ type: DELETE_DEVICE, payload: id });
       history('/home');
     } catch (error) {
         console.log(error.message);

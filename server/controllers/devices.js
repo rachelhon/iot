@@ -6,7 +6,6 @@ import {admin} from "../constants/adminEmail.js";
 
 export const getDevices = async (req, res) => {
     const email = req.query['params'];
-
     try{
         if (email == admin) {
             const deviceMessages = await DeviceMessage.find();
@@ -14,7 +13,7 @@ export const getDevices = async (req, res) => {
             return;
         }
         const deviceMessages = await DeviceMessage.find({email});
-        console.log(deviceMessages);
+        //console.log(deviceMessages);
         res.status(200).json(deviceMessages);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -35,9 +34,19 @@ export const createDevice = async(req, res) => {
 
 export const deleteDevice = async (req, res) => {
     const {id } = req.params;
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send(`No device with id: ${id}`);
+        }
+        await DeviceMessage.findByIdAndRemove(id);
+        res.status(200).json({ message: "Device deleted successfully." });
+    } catch (error) {
+        res.status().json({
+            message: error.message
+        });
+    }
+    
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No device with id: ${id}`);
-
-    await DeviceMessage.findByIdAndRemove(id);
-    res.status(200).json({ message: "Device deleted successfully." });
+    
+    
 }
