@@ -16,9 +16,10 @@ const Form = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
     const handleSubmit = (e) => {
-      deviceData.email = user?.result?.email;
+      //deviceData.email = user?.result?.email;
       e.preventDefault();
       dispatch(createDevice(deviceData, history));
+      history.push('/AdminHome');
     }
 
     const handleChange = (e) => {
@@ -40,6 +41,9 @@ const Form = () => {
           <br/>
           <br/>
           <TextField name="deviceID" variant="outlined" label="device ID" onChange={handleChange} />
+          <br/>
+          <br/>
+          <TextField name="email" variant="outlined" label="email" onChange={handleChange} />
           <br/>
           <br/>
           <Button className={classes.button} variant="contained" color="primary" size="large" type="submit" >Submit</Button>
