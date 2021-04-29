@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 // axios instance 
+<<<<<<< Updated upstream
 const API = axios.create({baseURL: 'http://localhost:5000'});
+=======
+const API = axios.create({baseURL: 'https://internet-of-things-f3.herokuapp.com'}); 
+>>>>>>> Stashed changes
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {

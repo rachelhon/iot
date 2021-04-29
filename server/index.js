@@ -15,6 +15,30 @@ app.use(cors());
 app.use('/devices', deviceRoutes);
 app.use('/user', userRouter);
 
+<<<<<<< Updated upstream
+=======
+app.get('/devices', (req,res) => {
+    res.send('Hello to Internet of Things Tracking App');
+});
+
+// const PodGroupAPI = "https://api.podiotsuite.com/v3/auth/token";
+// const PodGroupUsername = "lab@f3wireless.com";
+// const PodGroupPassword = "78UWq&v6";
+
+// fetch(PodGroupAPI, {
+//     body: JSON.stringify({
+//         "username": PodGroupUsername,
+//         "password": PodGroupPassword
+//     }),
+//     headers: {
+//         "Accept": "application/json",
+//         "Content-Type": "application/json"
+//     },
+//     method: "POST"
+// }).then(res => res.json())
+// .then(res => console.log(res)); 
+
+>>>>>>> Stashed changes
 const CONNECTION_URL = 'mongodb+srv://iot:123@cluster0.kmvh1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 5000;
 
