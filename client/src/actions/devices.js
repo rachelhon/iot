@@ -15,7 +15,7 @@ export const createDevice = (deviceData, history) => async (dispatch) => {
     try{
         const {data} = await api.createDevice(deviceData);
         dispatch({type: CREATE, payload: data});
-        history.push('/home');
+        history.push('/adminHome');
     } catch(error){
         alert('Please add valid device name and ID');
         console.log(error.message);
@@ -28,7 +28,7 @@ export const deleteDevice = (id, history) => async (dispatch) => {
       await api.deleteDevice(id);
   
       dispatch({ type: 'DELETE', payload: id });
-      history('/home');
+      history('/AdminHome');
     } catch (error) {
         console.log(error.message);
     }

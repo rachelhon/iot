@@ -25,7 +25,7 @@ const AddUser = () => {
 
   const cancel = (e) => {
     e.preventDefault();
-    history.push('AdminHome');
+    history.push('/AdminHome');
   }
 
     return (
