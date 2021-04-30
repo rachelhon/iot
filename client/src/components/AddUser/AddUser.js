@@ -4,7 +4,6 @@ import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useStyles from './styles';
 import {adminSignUp} from '../../actions/auth';
-import { getDevices } from '../../actions/devices';
 
 const initialState = {firstName: '', lastName: '', email: '', password: ''};
 
@@ -13,7 +12,6 @@ const AddUser = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState(initialState);
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value});

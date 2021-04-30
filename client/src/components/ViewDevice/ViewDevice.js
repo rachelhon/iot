@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Typography, Button, TextField, Grow, Container} from '@material-ui/core';
+import {Button, TextField, Grow, Container} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteDevice } from '../../actions/devices';

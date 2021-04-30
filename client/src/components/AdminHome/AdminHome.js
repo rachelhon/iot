@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Grow, Button, Typography } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
 import Users from '../User/Users';

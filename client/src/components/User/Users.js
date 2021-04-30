@@ -1,13 +1,11 @@
 import React, {useEffect} from 'react';
 import useStyles from './styles';
-import {useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListItemText, ListItem, Button, List} from '@material-ui/core/';
+import {List} from '@material-ui/core/';
 import { getusers } from '../../actions/auth';
 import User from './User/User';
 
 const Users = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const users = useSelector((state) => state.users);

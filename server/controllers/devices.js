@@ -51,7 +51,6 @@ export const createDevice = async(req, res) => {
 
 export const deleteDevice = async (req, res) => {
     const {id } = req.params;
-    console.log(id);
     try {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(404).send(`No device with id: ${id}`);

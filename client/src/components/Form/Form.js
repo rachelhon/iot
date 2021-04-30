@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Typography, TextField, Button} from '@material-ui/core';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useStyles from './styles';
 import {createDevice} from '../../actions/devices';
@@ -13,7 +13,7 @@ const Form = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     // get username
-    const user = useSelector((state) => state.users);
+    //const user = useSelector((state) => state.users);
 
     const handleSubmit = (e) => {
       e.preventDefault();

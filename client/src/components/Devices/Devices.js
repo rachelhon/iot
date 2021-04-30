@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Device from './Device/Device';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
@@ -20,7 +20,7 @@ const Devices = () => {
     email =  user.user.email;
   }
 
-  if (email == '') {
+  if (email === '') {
     email = admin;
   }
 
