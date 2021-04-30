@@ -49,6 +49,7 @@ export const adminSignUp = (formData, history) => async(dispatch) => {
 };
 
 export const getusers = () => async(dispatch) => {
+    //console.log("getting users");
     try {
         const {data} = await api.getUsers();
         dispatch({type: FETCH, payload: data});
@@ -72,6 +73,7 @@ export const deleteUser = (id) => async(dispatch) => {
     console.log('deleting user with id: ' + id);
     try {
         await api.deleteUsers(id);
+        console.log('user deleted');
         dispatch({
             type: DELETE_USER,
             payload: id

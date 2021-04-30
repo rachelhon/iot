@@ -16,7 +16,14 @@ const authReducer  = (state = {authData: null}, action) => {
         case SEND_USER_DATA:
             return action.payload;
         case DELETE_USER:
-            return [...state, action.payload];
+            let newState = []
+            var idx = 0;
+            for (const prop in state) {
+                if (state[prop]['_id'] != action.payload) {
+                    newState[idx++] = state[prop];
+                }
+            }
+            return newState;
         default:
             return state;
     }
