@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { getDevices } from '../../actions/devices';
 import { List } from '@material-ui/core';
+import {admin} from "../../constants/adminEmail";
 
 const Devices = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ const Devices = () => {
 
   if (user?.user?.email != null) {
     email =  user.user.email;
+  }
+
+  if (email == '') {
+    email = admin;
   }
 
   useEffect(() => {

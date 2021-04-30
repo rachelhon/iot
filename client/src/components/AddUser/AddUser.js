@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useStyles from './styles';
 import {adminSignUp} from '../../actions/auth';
+import { getDevices } from '../../actions/devices';
 
 const initialState = {firstName: '', lastName: '', email: '', password: ''};
 
@@ -25,6 +26,7 @@ const AddUser = () => {
 
   const cancel = (e) => {
     e.preventDefault();
+    
     history.push('AdminHome');
   }
 

@@ -14,11 +14,7 @@ const User = (props) => {
     dispatch(sendUserData(props));
     history.push('/AdminViewDevice');
   }
-  console.log(props.user._id);
-  // const deleteUser = (e) => {
-  //   console.log(e);
-  //   dispatch(deleteUser(props.user._id));
-  // }
+
   return (
     <ListItem className = {classes.Item}>
         <ListItemText className = {classes.text}>User Name: {props.user.name} User email: {props.user.email}</ListItemText>

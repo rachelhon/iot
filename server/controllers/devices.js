@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import DeviceMessage from '../models/deviceMessage.js';
+import userModel from '../models/user.js';
 import {admin} from "../constants/adminEmail.js";
 
 export const getDevices = async (req, res) => {
@@ -23,7 +24,23 @@ export const createDevice = async(req, res) => {
     const {deviceName, deviceID, email, createdAt} = req.body;
     const device = req.body;
     const newDevice = new DeviceMessage(device);
+    console.log(deviceName + ' ' + deviceID + ' ' + email);
     try{
+        // check if the email is valid
+        const existingUser = await userModel.findOne({email});
+        if (!existingUser) {
+            return res.status(400).json({message: "User does not exist"});
+        }
+        // check if any device name duplicate exists
+        const existingDeviceName = await DeviceMessage.findOne({deviceName});
+        if (existingDeviceName) {
+            return res.status(400).json({message: "Device Name already exists"});
+        }
+        // check if any device id duplicate exists
+        const existingDeviceID = await DeviceMessage.findOne({deviceID});
+        if (existingDeviceID) {
+            return res.status(400).json({message: "Device ID already exists"});
+        }
         // need to implement duplicate device id and name
         await newDevice.save();
         res.status(201).json(newDevice);
@@ -34,6 +51,7 @@ export const createDevice = async(req, res) => {
 
 export const deleteDevice = async (req, res) => {
     const {id } = req.params;
+    console.log(id);
     try {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(404).send(`No device with id: ${id}`);
@@ -45,8 +63,5 @@ export const deleteDevice = async (req, res) => {
             message: error.message
         });
     }
-    
-
-    
     
 }

@@ -3,7 +3,9 @@ import {SEND_DEVICE_DATA, CREATE, FETCH_ALL, DELETE_DEVICE} from '../constants/a
 const deviceReducer = (devices = [], action) => {
     switch (action.type) {
         case DELETE_DEVICE:
-            return devices.filter((device) => device._id !== action.payload);
+            // BUG ISSUE: ERROR OCCURS
+            //return [...devices, action.payload];
+            return action.payload;
         case FETCH_ALL:
             return action.payload;
         case CREATE:

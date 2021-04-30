@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Typography, TextField, Button} from '@material-ui/core';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useStyles from './styles';
 import {createDevice} from '../../actions/devices';
@@ -13,12 +13,12 @@ const Form = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     // get username
-    const user = JSON.parse(localStorage.getItem('profile'));
+    const user = useSelector((state) => state.users);
 
     const handleSubmit = (e) => {
-      deviceData.email = user?.result?.email;
       e.preventDefault();
       dispatch(createDevice(deviceData, history));
+      history.push('/AdminHome');
     }
 
     const handleChange = (e) => {
@@ -40,6 +40,9 @@ const Form = () => {
           <br/>
           <br/>
           <TextField name="deviceID" variant="outlined" label="device ID" onChange={handleChange} />
+          <br/>
+          <br/>
+          <TextField name="email" variant="outlined" label="email" onChange={handleChange} />
           <br/>
           <br/>
           <Button className={classes.button} variant="contained" color="primary" size="large" type="submit" >Submit</Button>
