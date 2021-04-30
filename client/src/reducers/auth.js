@@ -1,5 +1,5 @@
 
-import {AUTH, LOGOUT, FETCH, SEND_USER_DATA} from '../constants/actionTypes';
+import {AUTH, LOGOUT, FETCH, SEND_USER_DATA ,DELETE_USER} from '../constants/actionTypes';
 
 const authReducer  = (state = {authData: null}, action) => {
     switch (action.type) {
@@ -15,6 +15,8 @@ const authReducer  = (state = {authData: null}, action) => {
             return action.payload;
         case SEND_USER_DATA:
             return action.payload;
+        case DELETE_USER:
+            return [...state, action.payload];
         default:
             return state;
     }

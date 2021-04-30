@@ -1,4 +1,4 @@
-import {AUTH, FETCH, SEND_USER_DATA} from '../constants/actionTypes';
+import {AUTH, FETCH, SEND_USER_DATA, DELETE_USER} from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 
@@ -59,7 +59,23 @@ export const getusers = () => async(dispatch) => {
 
 export const sendUserData = (userData) => async(dispatch) => {
     try {
-        dispatch({type: SEND_USER_DATA, payload: userData});
+        dispatch({
+            type: SEND_USER_DATA, 
+            payload: userData
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteUser = (id) => async(dispatch) => {
+    console.log('deleting user with id: ' + id);
+    try {
+        await api.deleteUsers(id);
+        dispatch({
+            type: DELETE_USER,
+            payload: id
+        });
     } catch (error) {
         console.log(error);
     }

@@ -14,7 +14,6 @@ const ViewDevices = () => {
   const data = useSelector((state) => state.devices);
   const user = JSON.parse(localStorage.getItem('profile'));
   const email = user?.result?.email; 
-  console.log(data); 
 
   const returnDevice = (e) => {
     e.preventDefault();
@@ -25,9 +24,6 @@ const ViewDevices = () => {
     }
   }
 
-  const deleteDevice = (e) => {
-    //dispatch(deleteDevice(data.device._id), history);
-  }
 
   const editDeviceName = () => {
 
@@ -95,7 +91,10 @@ const ViewDevices = () => {
           Device page 
         </Button>
         
-        <Button variant="contained" color="secondary" onClick = {deleteDevice}>
+        <Button variant="contained" color="secondary" 
+        onClick = {() =>
+          dispatch(deleteDevice(data), history)
+        }>
           De-register Device
         </Button>
       </Container>
