@@ -41,7 +41,7 @@ const ViewDevices = () => {
       method: "PUT"
     })
 
-   
+   alert("The sim card has been enabled")
 
 
   }
@@ -58,7 +58,7 @@ const ViewDevices = () => {
       method: "PUT"
     })
 
-
+ alert("The sim card has been disabled")
   }
 
   return (
